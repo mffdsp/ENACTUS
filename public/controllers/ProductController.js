@@ -1,11 +1,20 @@
 const Products = require('../model/Product');
+const fs = require("fs");
+const path = require("path");
+
 
 //Create (Criação), Read (Consulta), Update (Atualização) e Delete (Destruição)
 module.exports = {
     async create(req, res){
         
         console.log('add a new Product');
-        newProduct = await Products.create(req.body);
+        newProduct = await Products.create({
+            name: req.body.name, 
+            price: req.body.price,
+            description: req.body.description,
+            image: req.file.path,
+        }
+            );
         return res.json(newProduct);
     },
     async readAll(req, res){

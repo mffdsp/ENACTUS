@@ -1,5 +1,10 @@
 const {Router} = require('express');
 const bodyParser = require('body-parser');
+const multer = require('multer');
+var storage = require('./imageRouter');
+
+const uploadImg = multer({storage: storage});
+
 
 productRouter = Router();
 productRouter.use(bodyParser.json());
@@ -14,7 +19,7 @@ productRouter.route('/')
     next();
 })
 .get(ProductController.readAll)
-.post(ProductController.create)
+.post(uploadImg.single('image'), ProductController.create)
 .put((req, res, next) => {
     res.statusCode = 403;
     res.end(`PUT operation not supported on ${req.baseUrl}${req.url}`);
