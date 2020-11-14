@@ -48,4 +48,11 @@ Modelo do Produto
     }
 ```
 
+# Tecnologias utilizadas:
+
+* NodeJs
+* Express
+* MongoDB
+* Multer
+
 E-mail para contato: <a href="mffsp@ic.ufal.br">mffsp@ic.ufal.br</a>
